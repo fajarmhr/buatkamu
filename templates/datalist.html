@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data sepikann</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/1.0.4/css/dataTables.responsive.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}">
+</head>
+
+<body>
+    <h2>Tabel sepikann Mas Fajar</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <table id="example" summary="This table shows how to create responsive tables using Datatables' extended functionality" class="table table-bordered table-hover dt-responsive" style="width:100%">
+        <caption class="text-center">A responsive table based on <a href="https://datatables.net/extensions/responsive/" target="_blank">DataTables</a>:</caption>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Panggilan</th>
+            <th>% Sayang</th>
+            <th>Diisi tangal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for sepikann in sepikannlist %}
+          <tr>
+            <td>{{ sepikann.name }}</td>
+            <td>{{ sepikann.nick }}</td>
+            <td>{{ sepikann.syg }}</td>
+            <td>{{ sepikann.time_created.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4" class="text-center">Data retrieved from <a href="" target="_blank">Survey</a> and <a href="" target="_blank">Jajak pendapat</a>.</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+
+<p class="p">Mohon digunakan dengan bijak.</p>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+    <script src="https://cdn.datatables.net/responsive/1.0.4/js/dataTables.responsive.js"></script>
+    <script src="{{ url_for('static', filename='js/table.js') }}"></script>
+</body>
+</html>
